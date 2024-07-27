@@ -5,8 +5,7 @@
   "main": "dist/toastbar.umd.js",
   "module": "dist/toastbar.es.js",
   "files": [
-    "dist",
-    "src/assets"
+    "dist"
   ],
   "scripts": {
     "dev": "vite",

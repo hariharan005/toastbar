@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.esm-bundler.js'
+      'vue': 'vue/dist/vue.esm-bundler.js',
+      '@': path.resolve(__dirname, 'src')  // Adding alias for src directory
     }
   },
   build: {
@@ -20,7 +21,8 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue'
-        }
+        },
+        assetFileNames: 'assets/[name].[hash].[ext]'  // Output pattern for assets
       }
     }
   }
