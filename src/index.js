@@ -9,12 +9,16 @@ const ToastBar = {
     },
     type: {
       type: String,
-      default: "success",
+      default: "info",
     },
     duration: {
       type: Number,
       default: 3000,
     },
+    theme: {
+      type: String,
+      default: "light-theme",
+    }
   },
   data() {
     return {
@@ -30,6 +34,8 @@ const ToastBar = {
     },
     getEmoji(type) {
       switch (type) {
+        case 'info':
+          return `<img src="../src/assets/info.png" alt="info" class="emoji-img"/>`; // Update the image path as needed
         case 'success':
           return `<img src="../src/assets/check.png" alt="success" class="emoji-img"/>`; // Update the image path as needed
         case 'warning':
@@ -45,7 +51,7 @@ const ToastBar = {
     return h(
       'div',
       {
-        class: ['toast', this.type],
+        class: ['toast', this.type, this.theme],
       },
       [
         h('span', {
@@ -98,6 +104,10 @@ const css = `
   height: 20px;
 }
 
+.toast.info {
+  background-color: white;
+}
+
 .toast.success {
   background-color: white;
 }
@@ -108,6 +118,16 @@ const css = `
 
 .toast.error {
   background-color: white;
+}
+
+.toast.light-theme {
+  background-color: white;
+  color: rgba(45, 45, 45);
+}
+
+.toast.dark-theme {
+  background-color: #333;
+  color: white;
 }
 `;
 
@@ -124,19 +144,22 @@ const toastPlugin = {
 
     // Register toast service
     app.config.globalProperties.toast = {
-      success(message) {
-        this.show(message, 'success');
+      info(message, theme = 'light-theme') {
+        this.show(message, 'info', theme);
       },
-      warning(message) {
-        this.show(message, 'warning');
+      success(message, theme = 'light-theme') {
+        this.show(message, 'success', theme);
       },
-      error(message) {
-        this.show(message, 'error');
+      warning(message, theme = 'light-theme') {
+        this.show(message, 'warning', theme);
       },
-      show(message, type) {
+      error(message, theme = 'light-theme') {
+        this.show(message, 'error', theme);
+      },
+      show(message, type, theme) {
         const container = document.createElement('div');
         const ToastConstructor = app.component('ToastBar');
-        const toastInstance = createApp(ToastConstructor, { message, type });
+        const toastInstance = createApp(ToastConstructor, { message, type, theme });
 
         toastInstance.mount(container);
         document.body.appendChild(container);
@@ -145,7 +168,7 @@ const toastPlugin = {
         setTimeout(() => {
           toastInstance.unmount();
           document.body.removeChild(container);
-        }, 3000);
+        }, 5000);
       }
     };
   }

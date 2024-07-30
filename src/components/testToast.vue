@@ -1,5 +1,6 @@
 <template>
     <div>
+      <button @click="showInfoToast">Show Info Toast</button>
       <button @click="showSuccessToast">Show Success Toast</button>
       <button @click="showWarningToast">Show Warning Toast</button>
       <button @click="showErrorToast">Show Error Toast</button>
@@ -9,6 +10,9 @@
   <script>
   export default {
     methods: {
+      showInfoToast() {
+        this.toast.info('This feeds Info!', 'dark-theme');
+      },
       showSuccessToast() {
         this.toast.success('Operation successful!');
       },
