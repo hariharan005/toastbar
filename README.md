@@ -55,6 +55,7 @@ export default {
 <!-- src/components/exampleComponent.vue -->
 <template>
   <div>
+    <button @click="showInfoToast">Show Info Toast</button>
     <button @click="showSuccess">Show Success</button>
     <button @click="showWarning">Show Warning</button>
     <button @click="showError">Show Error</button>
@@ -64,14 +65,17 @@ export default {
 <script>
 export default {
   methods: {
+    showInfoToast() {
+      this.toast.info('This feeds Info!', 'dark-theme'); // This will show in dark theme
+    },
     showSuccess() {
-      this.toast.success('Operation successful!');
+      this.toast.success('Operation successful!'); // This is default so white background toast
     },
     showWarning() {
-      this.toast.warning('This is a warning!');
+      this.toast.warning('This is a warning!'); // This is default so white background toast
     },
     showError() {
-      this.toast.error('An error occurred!');
+      this.toast.error('An error occurred!'); // This is default so white background toast
     }
   }
 };
@@ -82,6 +86,8 @@ export default {
 
 ### Toast Service Methods
 
+  * info(message: string);
+    - Displays a info toast with the provided message.
   * success(message: string);
     - Displays a success toast with the provided message.
   * warning(message: string);
@@ -95,6 +101,8 @@ export default {
     - The message to be displayed in the toast.
   * type: String
     - The type of toast (success, warning, error). 
+  * theme: String
+    - The theme of toast (light-theme, dark-theme).
   * Defaults to success.
 
 # License
