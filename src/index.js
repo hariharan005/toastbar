@@ -78,7 +78,7 @@ const css = `
 
 .toast {
   position: fixed;
-  height: 35px;
+  height: 50px;
   width: 300px;
   top: 20px;
   right: 20px;
