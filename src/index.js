@@ -35,13 +35,13 @@ const ToastBar = {
     getEmoji(type) {
       switch (type) {
         case 'info':
-          return `<img src="../src/assets/info.png" alt="info" class="emoji-img"/>`; // Update the image path as needed
+          return `<div class="icon info-icon">i</div>`; // Update the image path as needed
         case 'success':
-          return `<img src="../src/assets/check.png" alt="success" class="emoji-img"/>`; // Update the image path as needed
+          return `<div class="icon success-icon">✔</div>`; // Update the image path as needed
         case 'warning':
-          return `<img src="../src/assets/warning.png" alt="warning" class="emoji-img"/>`; // Update the image path as needed
+          return `<div class="icon warning-icon">!</div>`; // Update the image path as needed
         case 'error':
-          return `<img src="../src/assets/cross.png" alt="error" class="emoji-img"/>`; // Update the image path as needed
+          return `<div class="icon error-icon">✖</div>`; // Update the image path as needed
         default:
           return '';
       }
@@ -128,6 +128,33 @@ const css = `
 .toast.dark-theme {
   background-color: #333;
   color: white;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.info-icon {
+  background-color: #3498db;
+}
+.success-icon {
+    background-color: #2ecc71;
+}
+.warning-icon {
+    background-color: #f39c12;
+}
+.error-icon {
+    background-color: #e74c3c;
 }
 `;
 
