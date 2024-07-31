@@ -13,7 +13,7 @@ const ToastBar = {
     },
     duration: {
       type: Number,
-      default: 3000,
+      default: 5000,
     },
     theme: {
       type: String,
