@@ -1,7 +1,6 @@
-// src/vue3-toastbar/index.js
-import { createApp, h } from 'vue';
+import { createApp, h, ref, defineComponent } from 'vue';
 
-const ToastBar = {
+const ToastBar = defineComponent({
   props: {
     message: {
       type: String,
@@ -20,49 +19,59 @@ const ToastBar = {
       default: "light-theme",
     }
   },
-  data() {
-    return {
-      visible: false,
-    };
-  },
-  methods: {
-    show() {
-      this.visible = true;
+  setup(props) {
+    const visible = ref(true); // Start as true to show initially
+
+    const show = () => {
+      visible.value = true;
       setTimeout(() => {
-        this.visible = false;
-      }, this.duration);
-    },
-    getEmoji(type) {
+        visible.value = false;
+      }, props.duration);
+    };
+
+    const close = () => {
+      visible.value = false;
+    };
+
+    const getEmoji = (type) => {
       switch (type) {
         case 'info':
-          return `<div class="icon info-icon">i</div>`; // Update the image path as needed
+          return `<div class="icon info-icon">i</div>`;
         case 'success':
-          return `<div class="icon success-icon">✔</div>`; // Update the image path as needed
+          return `<div class="icon success-icon">✔</div>`;
         case 'warning':
-          return `<div class="icon warning-icon">!</div>`; // Update the image path as needed
+          return `<div class="icon warning-icon">!</div>`;
         case 'error':
-          return `<div class="icon error-icon">✖</div>`; // Update the image path as needed
+          return `<div class="icon error-icon">✖</div>`;
         default:
           return '';
       }
-    },
+    };
+
+    return { visible, show, close, getEmoji };
   },
   render() {
-    return h(
-      'div',
-      {
-        class: ['toast', this.type, this.theme],
-      },
-      [
-        h('span', {
-          class: 'emoji',
-          innerHTML: this.getEmoji(this.type),
-        }),
-        ` ${this.message}`
-      ]
-    );
+    return this.visible
+      ? h(
+          'div',
+          {
+            class: ['toast', this.type, this.theme],
+          },
+          [
+            h('span', {
+              class: 'emoji',
+              innerHTML: this.getEmoji(this.type),
+            }),
+            ` ${this.message}`,
+            h('button', {
+              class: [ 'close-button', this.theme ],
+              onClick: this.close,
+            }, '✖')
+          ]
+        )
+      : null;
   },
-};
+});
 
 const css = `
 @keyframes fadeInRight {
@@ -83,15 +92,18 @@ const css = `
   top: 20px;
   right: 20px;
   padding: 10px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
   border-radius: 5px;
   color: rgb(45, 45, 45);
-  font-size: 14px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   font-family: "Poppins", Helvetica, sans-serif;
   animation-duration: 0.5s;
   animation-name: fadeInRight;
+  justify-content: space-between;
 }
 
 .toast .emoji {
@@ -129,32 +141,53 @@ const css = `
   background-color: #333;
   color: white;
 }
+
 .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    color: white;
-    border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
+
 .info-icon {
   background-color: #3498db;
 }
+
 .success-icon {
-    background-color: #2ecc71;
+  background-color: #2ecc71;
 }
+
 .warning-icon {
-    background-color: #f39c12;
+  background-color: #f39c12;
 }
+
 .error-icon {
-    background-color: #e74c3c;
+  background-color: #e74c3c;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.close-button.light-theme {
+  color: rgba(45, 45, 45);
+}
+
+.close-button.dark-theme {
+  color: #ffff;
 }
 `;
 
