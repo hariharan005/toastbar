@@ -22,7 +22,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         },
-        assetFileNames: 'assets/[name].[ext]'  // Output pattern for assets
+        assetFileNames: '[name].[ext]'  // Output pattern for assets
       }
     }
   }

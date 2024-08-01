@@ -62,7 +62,9 @@ const ToastBar = defineComponent({
               class: 'emoji',
               innerHTML: this.getEmoji(this.type),
             }),
-            ` ${this.message}`,
+            h('span', {
+              class: 'message',
+            }, ` ${this.message}`),
             h('button', {
               class: [ 'close-button', this.theme ],
               onClick: this.close,
@@ -85,35 +87,38 @@ const css = `
   }
 }
 
+  
 .toast {
   position: fixed;
   height: 50px;
-  width: 300px;
+  width: 320px;
   top: 20px;
   right: 20px;
-  padding: 10px;
+  padding: 4px;
   cursor: pointer;
   box-sizing: border-box;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
   border-radius: 5px;
   color: rgb(45, 45, 45);
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   font-family: "Poppins", Helvetica, sans-serif;
   animation-duration: 0.5s;
   animation-name: fadeInRight;
-  justify-content: space-between;
+  transform: translate3d(0, 0, 9999px);
+  z-index: 9999;
 }
 
 .toast .emoji {
-  margin-right: 10px;
-  border-radius: 50%;
-}
+  position: absolute;
+  left: 10px;
 
-.toast .emoji-img {
-  width: 20px;
-  height: 20px;
+}
+.toast .message{
+  position: relative;
+  top: 2px;
+  left: 40px;
 }
 
 .toast.info {
@@ -176,10 +181,17 @@ const css = `
 }
 
 .close-button {
-  background: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
   border: none;
-  font-size: 18px;
+  background: none;
+  font-size: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center; /* center the content vertically */
+  justify-content: center; /* center the content horizontally */
+  padding: 5px; /* adjust padding as needed */
 }
 
 .close-button.light-theme {
@@ -187,7 +199,7 @@ const css = `
 }
 
 .close-button.dark-theme {
-  color: #ffff;
+  color: #fff;
 }
 `;
 

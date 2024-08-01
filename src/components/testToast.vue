@@ -1,6 +1,7 @@
 <template>
     <div>
       <button @click="showInfoToast">Show Info Toast</button>
+      <button @click="showInfoToastlight">Show Info Toast Light</button>
       <button @click="showSuccessToast">Show Success Toast</button>
       <button @click="showWarningToast">Show Warning Toast</button>
       <button @click="showErrorToast">Show Error Toast</button>
@@ -12,6 +13,9 @@
     methods: {
       showInfoToast() {
         this.toast.info('This feeds Info!', 'dark-theme');
+      },
+      showInfoToastlight() {
+        this.toast.info('This feeds Info!');
       },
       showSuccessToast() {
         this.toast.success('Operation successful!');
