@@ -1,4 +1,4 @@
-import { createApp, h, ref, defineComponent } from 'vue';
+import { createApp, h, ref, defineComponent } from "vue";
 
 const ToastBar = defineComponent({
   props: {
@@ -17,7 +17,7 @@ const ToastBar = defineComponent({
     theme: {
       type: String,
       default: "light-theme",
-    }
+    },
   },
   setup(props) {
     const visible = ref(true); // Start as true to show initially
@@ -35,16 +35,16 @@ const ToastBar = defineComponent({
 
     const getEmoji = (type) => {
       switch (type) {
-        case 'info':
+        case "info":
           return `<div class="icon info-icon">i</div>`;
-        case 'success':
+        case "success":
           return `<div class="icon success-icon">✔</div>`;
-        case 'warning':
+        case "warning":
           return `<div class="icon warning-icon">!</div>`;
-        case 'error':
+        case "error":
           return `<div class="icon error-icon">✖</div>`;
         default:
-          return '';
+          return "";
       }
     };
 
@@ -53,22 +53,30 @@ const ToastBar = defineComponent({
   render() {
     return this.visible
       ? h(
-          'div',
+          "div",
           {
-            class: ['toast', this.type, this.theme],
+            class: ["toast", this.type, this.theme],
           },
           [
-            h('span', {
-              class: 'emoji',
+            h("span", {
+              class: "emoji",
               innerHTML: this.getEmoji(this.type),
             }),
-            h('span', {
-              class: 'message',
-            }, ` ${this.message}`),
-            h('button', {
-              class: [ 'close-button', this.theme ],
-              onClick: this.close,
-            }, '✖')
+            h(
+              "span",
+              {
+                class: "message",
+              },
+              ` ${this.message}`
+            ),
+            h(
+              "button",
+              {
+                class: ["close-button", this.theme],
+                onClick: this.close,
+              },
+              "✖"
+            ),
           ]
         )
       : null;
@@ -87,7 +95,6 @@ const css = `
   }
 }
 
-  
 .toast {
   position: fixed;
   height: 50px;
@@ -119,6 +126,12 @@ const css = `
   position: relative;
   top: 2px;
   left: 40px;
+  text-align: justify;
+  text-justify: auto;
+  max-width: 230px;
+  max-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .toast.info {
@@ -205,33 +218,36 @@ const css = `
 
 const toastPlugin = {
   install(app) {
-
     // Inject CSS into document head
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = css;
     document.head.append(style);
-    
+
     // Register ToastBar component globally
-    app.component('ToastBar', ToastBar);
+    app.component("ToastBar", ToastBar);
 
     // Register toast service
     app.config.globalProperties.toast = {
-      info(message, theme = 'light-theme') {
-        this.show(message, 'info', theme);
+      info(message, theme = "light-theme") {
+        this.show(message, "info", theme);
       },
-      success(message, theme = 'light-theme') {
-        this.show(message, 'success', theme);
+      success(message, theme = "light-theme") {
+        this.show(message, "success", theme);
       },
-      warning(message, theme = 'light-theme') {
-        this.show(message, 'warning', theme);
+      warning(message, theme = "light-theme") {
+        this.show(message, "warning", theme);
       },
-      error(message, theme = 'light-theme') {
-        this.show(message, 'error', theme);
+      error(message, theme = "light-theme") {
+        this.show(message, "error", theme);
       },
       show(message, type, theme) {
-        const container = document.createElement('div');
-        const ToastConstructor = app.component('ToastBar');
-        const toastInstance = createApp(ToastConstructor, { message, type, theme });
+        const container = document.createElement("div");
+        const ToastConstructor = app.component("ToastBar");
+        const toastInstance = createApp(ToastConstructor, {
+          message,
+          type,
+          theme,
+        });
 
         toastInstance.mount(container);
         document.body.appendChild(container);
@@ -241,9 +257,9 @@ const toastPlugin = {
           toastInstance.unmount();
           document.body.removeChild(container);
         }, 5000);
-      }
+      },
     };
-  }
+  },
 };
 
 export default toastPlugin;

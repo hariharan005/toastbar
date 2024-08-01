@@ -12,7 +12,7 @@
   export default {
     methods: {
       showInfoToast() {
-        this.toast.info('This feeds Info!', 'dark-theme');
+        this.toast.info('To install vue3-toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:', 'dark-theme');
       },
       showInfoToastlight() {
         this.toast.info('This feeds Info!');
