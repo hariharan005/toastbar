@@ -1,6 +1,6 @@
 {
   "name": "toastbar",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A Vue 3 plugin for toast notifications with emojis",
   "main": "dist/toastbar.umd.js",
   "module": "dist/toastbar.es.js",
@@ -26,7 +26,13 @@
     "vue3-toastbar",
     "vue-toast",
     "vue3-toast",
-    "vue3-component"
+    "vue3-component",
+    "react",
+    "reactjs",
+    "react toast",
+    "reactjs toast",
+    "reactjs toast notification",
+    "react toast notification"
   ],
   "dependencies": {
     "vue": "^3.4.31"
