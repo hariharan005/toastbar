@@ -1,21 +1,24 @@
-# vue3-toastbar
+# toastbar
 
-vue3-toastbar is a Vue 3 plugin for displaying toast notifications. It provides a simple way to show success, warning, and error messages in your Vue applications.
+toastbar is a plugin for displaying toast notifications. It provides a simple way to show info, success, warning, and error messages in your Web applications.
 
 ## Features
 
-* Success, Warning, and Error Toasts: Easily display different types of messages.
-* Customizable: Style your toasts with CSS.
-* Easy Integration: Simple setup with Vue 3.
+* Info, Success, Warning, and Error Toasts: 
+  - Easily display different types of messages.
+* Easy Integration: 
+  - Simple setup with Vue 3.
+* Themes: 
+  - By default its light theme and can be changed to dark if need.
 
 ## Installation
 
-To install vue3-toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:
+To install toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:
 
 ``` npm install toastbar ```
 
 
-### Usage Setup
+### Usage Setup for Vue3
 
 1. Import and use the plugin in your main.js or main.ts file:
 ``` // main.js
@@ -72,7 +75,7 @@ export default {
       this.toast.success('Operation successful!'); // This is default so white background toast
     },
     showWarning() {
-      this.toast.warning('This is a warning!'); // This is default so white background toast
+      this.toast.warning('This is a warning!', 'light-theme'); // This will show in light theme
     },
     showError() {
       this.toast.error('An error occurred!'); // This is default so white background toast
@@ -80,6 +83,81 @@ export default {
   }
 };
 </script>
+```
+### Usage Setup for React JS
+
+## Installation
+
+To install toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:
+
+``` npm install toastbar ```
+
+1. Import and use the plugin in your index.js file:
+
+Add the below code in your index.js 
+
+```
+import toastPlugin from 'toastbar';
+import { createApp } from 'vue';
+
+// Create a Vue app instance and use the toastPlugin
+const app = createApp({});
+app.use(toastPlugin);
+
+// mount the Vue app to a temperary container
+const container = document.createElement('div');
+document.body.appendChild(container);
+app.mount(container);
+
+// Add the toast function to the global window object for easy access
+
+window.toast = app.config.globalProperties.toast;
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals(); 
+
+```
+2. Create your component to use the toast feature
+
+```
+import React from 'react';
+
+const ToastComponent = () => {
+
+  const showInfoToast = () => {
+    window.toast.info('Info message', 'dark-theme');
+  };
+
+  const showSuccessToast = () => {
+    window.toast.success('Success message');
+  };
+
+  const showWarningToast = () => {
+    window.toast.warning('Warning message');
+  };
+
+  const showErrorToast = () => {
+    window.toast.error('Error message');
+  };
+
+  return (
+    <div>
+      <button onClick={showInfoToast}>Show Info Toast</button>
+      <button onClick={showSuccessToast}>Show Success Toast</button>
+      <button onClick={showWarningToast}>Show Warning Toast</button>
+      <button onClick={showErrorToast}>Show Error Toast</button>
+    </div>
+  );
+};
+
+export default ToastComponent;
+
 ```
 
 ## API Reference
@@ -103,8 +181,7 @@ export default {
     - The type of toast (success, warning, error). 
   * theme: String
     - The theme of toast (light-theme, dark-theme).
-  * Defaults to success.
 
 # License
 
-vue3-toastbar is licensed under the [MIT License](https://github.com/hariharan005/vue3-toastbar/blob/main/LICENSE)
+toastbar is licensed under the [MIT License](https://github.com/hariharan005/toastbar/blob/main/LICENSE)
