@@ -1,6 +1,6 @@
 {
   "name": "toastbar",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "A Vue 3 plugin for toast notifications with emojis",
   "main": "dist/toastbar.umd.js",
   "module": "dist/toastbar.es.js",
