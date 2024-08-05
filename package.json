@@ -7,6 +7,12 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hariharan005/toastbar.git"
+  },
+  "license": "MIT",
+  "author": "Hariharan Chellamuthu",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
