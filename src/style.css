@@ -77,3 +77,133 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast {
+  position: fixed;
+  height: 50px;
+  width: 320px;
+  top: 20px;
+  right: 20px;
+  padding: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  border-radius: 5px;
+  color: rgb(45, 45, 45);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", Helvetica, sans-serif;
+  animation-duration: 0.5s;
+  animation-name: fadeInRight;
+  transform: translate3d(0, 0, 9999px);
+  z-index: 9999;
+}
+
+.toast .emoji {
+  position: absolute;
+  left: 10px;
+
+}
+.toast .message{
+  position: relative;
+  top: 2px;
+  left: 40px;
+  text-align: justify;
+  text-justify: auto;
+  max-width: 230px;
+  max-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.toast.info {
+  background-color: white;
+}
+
+.toast.success {
+  background-color: white;
+}
+
+.toast.warning {
+  background-color: white;
+}
+
+.toast.error {
+  background-color: white;
+}
+
+.toast.light-theme {
+  background-color: white;
+  color: rgba(45, 45, 45);
+}
+
+.toast.dark-theme {
+  background-color: #333;
+  color: white;
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.info-icon {
+  background-color: #3498db;
+}
+
+.success-icon {
+  background-color: #2ecc71;
+}
+
+.warning-icon {
+  background-color: #f39c12;
+}
+
+.error-icon {
+  background-color: #e74c3c;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* center the content vertically */
+  justify-content: center; /* center the content horizontally */
+  padding: 5px; /* adjust padding as needed */
+}
+
+.close-button.light-theme {
+  color: rgba(45, 45, 45);
+}
+
+.close-button.dark-theme {
+  color: #fff;
+}
