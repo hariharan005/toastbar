@@ -1,4 +1,4 @@
-declare module 'toastPlugin' {
+declare module 'toastbar' {
     import { App } from 'vue';
   
     export interface ToastBarProps {
