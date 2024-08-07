@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+      copyDtsFiles: true, // Ensure `.d.ts` files are copied to the output directory
+    }),
+  ],
   resolve: {
     alias: {
       'vue': 'vue/dist/vue.esm-bundler.js',
