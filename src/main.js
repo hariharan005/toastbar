@@ -5,4 +5,4 @@ import toastPlugin from './index.js';
 
 const app = createApp(App);
 app.use(toastPlugin);
-app.mount('#app')
+app.mount('#app');

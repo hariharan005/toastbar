@@ -1,6 +1,10 @@
 {
   "name": "toastbar",
+<<<<<<< HEAD
   "version": "1.0.25",
+=======
+  "version": "1.0.19",
+>>>>>>> 9bcdba7d5bad9c84d11f9f659f3712fb8b787b65
   "description": "A Vue 3 plugin for toast notifications with emojis",
   "main": "dist/toastbar.umd.js",
   "module": "dist/toastbar.es.js",
@@ -8,6 +12,12 @@
   "files": [
     "/dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hariharan005/toastbar.git"
+  },
+  "license": "MIT",
+  "author": "Hariharan Chellamuthu",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -41,6 +51,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
-    "vite": "^5.3.4"
+    "typescript": "^5.5.4",
+    "vite": "^5.3.4",
+    "vite-plugin-dts": "^4.0.0-beta.2"
   }
 }
