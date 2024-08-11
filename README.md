@@ -1,5 +1,5 @@
 # Toastbar
-
+![](https://github.com/hariharan005/toastbar/blob/main/src/assets/toastbar.gif)
 Toastbar is a plugin for displaying toast notifications. It provides a simple way to show info, success, warning, and error messages in your Web applications.
 
 ## Features
