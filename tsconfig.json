@@ -1,11 +1,16 @@
 {
     "compilerOptions": {
+        // Specify the module code generation method: "CommonJS" is the module system used by Node.js
         "module": "CommonJS",
+        // Set the target ECMAScript version to "ES6" (also known as ECMAScript 2015)
         "target": "ES6",
+        // Generate `.d.ts` declaration files for TypeScript to provide type information for your library
         "declaration": true,
+        // Specify the output directory for compiled JavaScript and declaration files
         "outDir": "./dist/"
     },
     "include": [
+        // Include all TypeScript files in the `src` directory and its subdirectories
         "src/**/*"
     ]
 }

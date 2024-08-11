@@ -1,209 +1,232 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Set default font styles and global settings */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Define a stack of fallback fonts */
+  line-height: 1.5; /* Set default line height */
+  font-weight: 400; /* Set default font weight */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Define color scheme preferences for light and dark mode */
+  color-scheme: light dark; /* Support for light and dark mode */
+  color: rgba(255, 255, 255, 0.87); /* Default text color in light mode */
+  background-color: #242424; /* Default background color in light mode */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Enhance text rendering for better readability */
+  font-synthesis: none; /* Disable synthetic bold/italic fonts */
+  text-rendering: optimizeLegibility; /* Optimize text rendering for legibility */
+  -webkit-font-smoothing: antialiased; /* Smooth the font on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth the font on macOS Firefox */
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  /* Style for anchor (link) elements */
+  font-weight: 500; /* Slightly bolder font for links */
+  color: #646cff; /* Default link color */
+  text-decoration: inherit; /* Inherit text decoration (underline, etc.) */
 }
+
 a:hover {
-  color: #535bf2;
+  /* Style for links when hovered */
+  color: #535bf2; /* Darker shade of blue on hover */
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* Global body styles */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Use flexbox for layout */
+  place-items: center; /* Center content vertically and horizontally */
+  min-width: 320px; /* Minimum width to prevent very narrow layouts */
+  min-height: 100vh; /* Make sure the body takes at least the full height of the viewport */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  /* Styles for h1 headings */
+  font-size: 3.2em; /* Large font size */
+  line-height: 1.1; /* Compact line height */
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  /* Default button styles */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid transparent; /* Transparent border to enable a visible border on hover */
+  padding: 0.6em 1.2em; /* Button padding for better spacing */
+  font-size: 1em; /* Base font size for buttons */
+  font-weight: 500; /* Semi-bold font weight */
+  font-family: inherit; /* Inherit font from parent */
+  background-color: #1a1a1a; /* Dark background color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: border-color 0.25s; /* Smooth transition for border color */
 }
+
 button:hover {
-  border-color: #646cff;
+  /* Change border color on hover */
+  border-color: #646cff; /* Blue border on hover */
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* Styles for focused buttons */
+  outline: 4px auto -webkit-focus-ring-color; /* Browser-specific focus ring */
 }
 
 .card {
-  padding: 2em;
+  /* Styles for a card element */
+  padding: 2em; /* Padding around the content */
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* Main app container styles */
+  max-width: 1280px; /* Maximum width of the app */
+  margin: 0 auto; /* Center the app horizontally */
+  padding: 2rem; /* Padding inside the app container */
+  text-align: center; /* Center text within the app */
 }
 
 @media (prefers-color-scheme: light) {
+  /* Styles for light mode */
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547; /* Darker text color in light mode */
+    background-color: #ffffff; /* White background in light mode */
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Light blue link color on hover */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light background color for buttons in light mode */
   }
 }
+
 @keyframes fadeInRight {
+  /* Keyframe animation for toast notifications */
   from {
-    opacity: 0;
-    transform: translateX(100%);
+    opacity: 0; /* Start fully transparent */
+    transform: translateX(100%); /* Start off-screen to the right */
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1; /* End fully visible */
+    transform: translateX(0); /* End in original position */
   }
 }
 
 .toast {
-  position: fixed;
-  height: 50px;
-  width: 320px;
-  top: 20px;
-  right: 20px;
-  padding: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
-  border-radius: 5px;
-  color: rgb(45, 45, 45);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  font-family: "Poppins", Helvetica, sans-serif;
-  animation-duration: 0.5s;
-  animation-name: fadeInRight;
-  transform: translate3d(0, 0, 9999px);
-  z-index: 9999;
+  /* General styles for toast notifications */
+  position: fixed; /* Fixed position on the screen */
+  height: 50px; /* Set the height of the toast */
+  width: 320px; /* Set the width of the toast */
+  top: 20px; /* Position 20px from the top of the viewport */
+  right: 20px; /* Position 20px from the right of the viewport */
+  padding: 4px; /* Padding inside the toast */
+  cursor: pointer; /* Pointer cursor */
+  box-sizing: border-box; /* Include padding and border in the element's width and height */
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5); /* Subtle shadow for depth */
+  border-radius: 5px; /* Rounded corners */
+  color: rgb(45, 45, 45); /* Default text color */
+  font-size: 16px; /* Base font size for the toast */
+  display: flex; /* Flexbox layout for aligning content */
+  align-items: center; /* Center content vertically */
+  font-family: "Poppins", Helvetica, sans-serif; /* Font stack for the toast */
+  animation-duration: 0.5s; /* Duration of the fade-in animation */
+  animation-name: fadeInRight; /* Apply the fade-in animation */
+  transform: translate3d(0, 0, 9999px); /* Ensure the toast stays on top */
+  z-index: 9999; /* Ensure the toast appears above other content */
 }
 
 .toast .emoji {
-  position: absolute;
-  left: 10px;
-
-}
-.toast .message{
-  position: relative;
-  top: 2px;
-  left: 40px;
-  text-align: justify;
-  text-justify: auto;
-  max-width: 230px;
-  max-height: auto;
-  white-space: nowrap;
-  overflow: hidden;
+  /* Styles for the emoji/icon within the toast */
+  position: absolute; /* Position relative to the toast container */
+  left: 10px; /* Position 10px from the left edge of the toast */
 }
 
-.toast.info {
-  background-color: white;
+.toast .message {
+  /* Styles for the message text within the toast */
+  position: relative; /* Position relative to the nearest positioned ancestor */
+  top: 2px; /* Slight offset from the top */
+  left: 40px; /* Position 40px from the left to make room for the emoji */
+  text-align: justify; /* Justify the text */
+  text-justify: auto; /* Automatic text justification */
+  max-width: 230px; /* Maximum width of the text container */
+  max-height: auto; /* Allow height to adjust automatically */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any text that overflows */
 }
 
-.toast.success {
-  background-color: white;
-}
-
-.toast.warning {
-  background-color: white;
-}
-
+.toast.info,
+.toast.success,
+.toast.warning,
 .toast.error {
-  background-color: white;
+  /* Base background color for different toast types */
+  background-color: white; /* Default background color */
 }
 
 .toast.light-theme {
-  background-color: white;
-  color: rgba(45, 45, 45);
+  /* Light theme styles for the toast */
+  background-color: white; /* White background for light theme */
+  color: rgba(45, 45, 45); /* Dark text color for light theme */
 }
 
 .toast.dark-theme {
-  background-color: #333;
-  color: white;
+  /* Dark theme styles for the toast */
+  background-color: #333; /* Dark background for dark theme */
+  color: white; /* Light text color for dark theme */
 }
 
 .icon {
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  color: white;
-  border-radius: 50%;
-  font-size: 24px;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  /* Styles for the icon inside the toast */
+  display: flex; /* Flexbox layout */
+  flex-shrink: 0; /* Prevent the icon from shrinking */
+  justify-content: center; /* Center icon horizontally */
+  align-items: center; /* Center icon vertically */
+  width: 25px; /* Set the width of the icon */
+  height: 25px; /* Set the height of the icon */
+  color: white; /* Default icon color */
+  border-radius: 50%; /* Make the icon circular */
+  font-size: 24px; /* Set the font size for the icon */
+  font-weight: bold; /* Bold font weight for the icon */
+  font-family: Arial, sans-serif; /* Font family for the icon */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for background color and scale */
 }
 
 .info-icon {
-  background-color: #3498db;
+  /* Background color for info icon */
+  background-color: #3498db; /* Blue for info */
 }
 
 .success-icon {
-  background-color: #2ecc71;
+  /* Background color for success icon */
+  background-color: #2ecc71; /* Green for success */
 }
 
 .warning-icon {
-  background-color: #f39c12;
+  /* Background color for warning icon */
+  background-color: #f39c12; /* Orange for warning */
 }
 
 .error-icon {
-  background-color: #e74c3c;
+  /* Background color for error icon */
+  background-color: #e74c3c; /* Red for error */
 }
 
 .close-button {
-  position: absolute;
-  top: 0;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center; /* center the content vertically */
-  justify-content: center; /* center the content horizontally */
-  padding: 5px; /* adjust padding as needed */
+  /* Styles for the close button inside the toast */
+  position: absolute; /* Position relative to the toast container */
+  top: 0; /* Position at the top */
+  right: 10px; /* Position 10px from the right */
+  border: none; /* Remove default border */
+  background: none; /* Remove background color */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 5px; /* Padding for click area */
 }
 
 .close-button.light-theme {
-  color: rgba(45, 45, 45);
+  /* Light theme color for close button */
+  color: rgba(45, 45, 45); /* Dark color for light theme */
 }
 
 .close-button.dark-theme {
-  color: #fff;
+  /* Dark theme color for close button */
+  color: #fff; /* Light color for dark theme */
 }
