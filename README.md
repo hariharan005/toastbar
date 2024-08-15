@@ -13,7 +13,7 @@ Toastbar is a plugin for displaying toast notifications. It provides a simple wa
 
 ## Installation
 
-To install toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:
+To install toastbar, you need to have npm installed. Then, you can use one of the following commands:
 
 ``` npm install toastbar ```
 
@@ -88,7 +88,7 @@ export default {
 
 ## Installation
 
-To install toastbar, you need to have npm or yarn installed. Then, you can use one of the following commands:
+To install toastbar, you need to have npm installed. Then, you can use one of the following commands:
 
 ``` npm install toastbar ```
 
